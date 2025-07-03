@@ -1,0 +1,173 @@
+{
+  "name": "code-templates-extension",
+  "displayName": "Code Templates Extension",
+  "description": "Create, insert and manage custom code templates - boost your productivity!",
+  "version": "1.6.0",
+  "publisher": "code-templates-extension",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Danil1234-cmd/code-templates-extension.git"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "snippets",
+    "templates",
+    "productivity",
+    "code generation",
+    "boilerplate",
+    "scaffolding",
+    "developer tools"
+  ],
+  "icon": "media/extension-icon.png",
+  "galleryBanner": {
+    "color": "#2C3E50",
+    "theme": "dark"
+  },
+  "bugs": {
+    "url": "https://github.com/Danil1234-cmd/code-templates-extension/issues"
+  },
+  "homepage": "https://github.com/Danil1234-cmd/code-templates-extension#readme",
+  "license": "MIT",
+  "activationEvents": [
+    "onCommand:codeTemplates.insertTemplate",
+    "onCommand:codeTemplates.createTemplate",
+    "onCommand:codeTemplates.createTemplateFromSelection",
+    "onCommand:codeTemplates.deleteTemplate",
+    "onCommand:codeTemplates.editTemplate",
+    "onView:codeTemplatesView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeTemplates.insertTemplate",
+        "title": "Insert Template"
+      },
+      {
+        "command": "codeTemplates.createTemplate",
+        "title": "Create Template",
+        "icon": "$(add)"
+      },
+      {
+        "command": "codeTemplates.createTemplateFromSelection",
+        "title": "Create Template from Selection",
+        "category": "Code Templates"
+      },
+      {
+        "command": "codeTemplates.deleteTemplate",
+        "title": "Delete"
+      },
+      {
+        "command": "codeTemplates.copyTemplateContent",
+        "title": "Copy",
+        "category": "Code Templates"
+      },
+      {
+        "command": "codeTemplates.createFileFromTemplate",
+        "title": "Create File from Template",
+        "category": "Code Templates"
+      },
+      {
+        "command": "codeTemplates.editTemplate",
+        "title": "Edit",
+        "category": "Code Templates"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codeTemplates.insertTemplate",
+          "group": "codeTemplates@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "codeTemplates.createTemplate",
+          "group": "codeTemplates@2",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "codeTemplates.createTemplateFromSelection",
+          "group": "codeTemplates@3",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "codeTemplates.createTemplate",
+          "group": "codeTemplates",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "codeTemplates.deleteTemplate",
+          "group": "codeTemplates",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "codeTemplates.createTemplate",
+          "when": "view == codeTemplatesView",
+          "group": "navigation",
+          "icon": "$(add)"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "codeTemplates.copyTemplateContent",
+          "when": "view == codeTemplatesView && viewItem == template-item",
+          "group": "inline"
+        },
+        {
+          "command": "codeTemplates.editTemplate",
+          "when": "view == codeTemplatesView && viewItem == template-item",
+          "group": "inline"
+        },
+        {
+          "command": "codeTemplates.deleteTemplate",
+          "when": "view == codeTemplatesView && viewItem == template-item",
+          "group": "inline"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeTemplatesContainer",
+          "title": "Code Templates",
+          "icon": "media/template-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeTemplatesContainer": [
+        {
+          "id": "codeTemplatesView",
+          "name": "Templates",
+          "contextualTitle": "Code Templates"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "codeTemplatesView",
+        "contents": "No templates found. [Create Template](command:codeTemplates.createTemplate)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.4",
+    "@types/vscode": "^1.101.0",
+    "typescript": "^5.8.3"
+  },
+  "type": "commonjs"
+}
