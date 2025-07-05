@@ -3,6 +3,7 @@
 ![Extension Icon](extension-icon.png)
 
 Boost your productivity with custom code templates! Create, manage, and insert reusable code snippets with ease.
+[VS Code market](https://github.com/Danil1234-cmd/code-templates-extension](https://marketplace.visualstudio.com/items?itemName=code-templates-extension.code-templates-extension))
 
 ## Features
 
